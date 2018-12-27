@@ -1,25 +1,48 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
+import React from 'react';
 import './App.css';
+import { makeData, Tips } from "./Utils";
+import DraggableTable from "./DraggableTable";
 
-class App extends Component {
+class App extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      data: makeData()
+    };
+  }
   render() {
+    const { data } = this.state;
+    //const fieldMap = ["firstName", "lastName", "age", "status"];
+
+    //const heads = ["First Name", "Last Name", "Age", "Status"];
+    const columns = [
+      {
+        Header: "First Name",
+        accessor: "firstName"
+      },
+      {
+        Header: "Last Name",
+        accessor: "lastName"
+      },
+      {
+        Header: "Age",
+        accessor: "age"
+      },
+      {
+        Header: "Status",
+        accessor: "status"
+      }
+    ];
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+      <div>
+        <DraggableTable
+          rows={data}
+          columns={columns}
+          defaultPageSize={5}
+          className="-striped -highlight"
+        />
+        <br />
+        <Tips />
       </div>
     );
   }
