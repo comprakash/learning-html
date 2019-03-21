@@ -1,2 +1,2 @@
-# learning-html
-Learning HTML and HTML5
+# learning-react
+Learning React.js with Redux
