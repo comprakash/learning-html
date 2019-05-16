@@ -2,6 +2,8 @@ import React, {Component} from "react";
 import logo from "./logo.svg";
 import "./App.css";
 import CommentBox from "./components/comment-box/comment-box";
+import User from "./components/user/user";
+import Myuser from "./data/my-user";
 
 class App extends Component {
   render() {
@@ -21,6 +23,7 @@ class App extends Component {
             Learn React
           </a>
           <CommentBox />
+          <User user={Myuser}/>
         </header>
       </div>
     );
