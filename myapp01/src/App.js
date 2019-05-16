@@ -3,6 +3,7 @@ import logo from "./logo.svg";
 import "./App.css";
 import CommentBox from "./components/comment-box/comment-box";
 import User from "./components/user/user";
+import Menu from "./components/menu/menu";
 import Myuser from "./data/my-user";
 
 class App extends Component {
@@ -24,6 +25,7 @@ class App extends Component {
           </a>
           <CommentBox />
           <User user={Myuser}/>
+          <Menu />
         </header>
       </div>
     );
