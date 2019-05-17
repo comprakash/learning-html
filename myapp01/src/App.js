@@ -5,6 +5,9 @@ import CommentBox from "./components/comment-box/comment-box";
 import User from "./components/user/user";
 import Menu from "./components/menu/menu";
 import Myuser from "./data/my-user";
+import MyTextBox from "./components/my-text-box/my-text-box";
+import MyButton from "./components/my-button/my-button";
+import MyLine from "./components/my-line/my-line";
 
 class App extends Component {
   render() {
@@ -12,20 +15,12 @@ class App extends Component {
       <div className="App">
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
           <CommentBox />
           <User user={Myuser}/>
           <Menu />
+          <MyTextBox />
+          <MyButton />
+          <MyLine name="fades away ... and springs back!!"/>
         </header>
       </div>
     );
