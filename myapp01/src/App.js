@@ -8,6 +8,7 @@ import Myuser from "./data/my-user";
 import MyTextBox from "./components/my-text-box/my-text-box";
 import MyButton from "./components/my-button/my-button";
 import MyLine from "./components/my-line/my-line";
+import UserGist from "./components/user-gist/user-gist";
 
 class App extends Component {
   render() {
@@ -21,6 +22,7 @@ class App extends Component {
           <MyTextBox />
           <MyButton />
           <MyLine name="fades away ... and springs back!!"/>
+          <UserGist source="https://api.github.com/users/octocat/gists" />
         </header>
       </div>
     );
