@@ -3,8 +3,8 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 
-import EmailListItem from './EmailListItem';
-import {EMAIL_PROP_TYPE} from './constants';
+import EmailListItem from '../email-list-item/email-list-item';
+import {EMAIL_PROP_TYPE} from '../constants';
 
 import './email-list.css';
 

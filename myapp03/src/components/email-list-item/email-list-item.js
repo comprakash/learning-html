@@ -2,9 +2,9 @@ import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
-import {EMAIL_PROP_TYPE} from './constants';
+import {EMAIL_PROP_TYPE} from '../constants';
 
-import './email-list-item.css';
+import './email-list-item.scss';
 
 const EmailListItemStatus = ({isSelected, unread, onDelete, onMarkUnread}) => {
   let markUnreadButton;

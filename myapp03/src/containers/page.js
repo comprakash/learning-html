@@ -17,7 +17,7 @@ import {
   markUnread as markUnreadAction
 } from '../actions';
 
-import './Page.css';
+import './page.css';
 
 const EmailViewWrapper = ({
   selectedEmail,

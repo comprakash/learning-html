@@ -1,9 +1,9 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 
-import {EMAIL_PROP_TYPE} from './constants';
+import {EMAIL_PROP_TYPE} from '../constants';
 
-import './EmailView.css';
+import './email-view.css';
 
 const EmailViewButtonBar = ({
   unread,
