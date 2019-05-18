@@ -1,0 +1,26 @@
+import React, { Component } from 'react';
+import PropTypes from 'prop-types'
+
+class MyCompPropType extends Component{
+
+    render() {
+        return (
+            <div>
+                <div>Using React</div>
+                <div>{this.props.message} used by {this.props.requiredString} </div>
+                <div>{this.props.msg2} counter: {this.props.number} </div>
+            </div>
+        );
+    }
+}
+
+MyCompPropType.defaultProps = {message: "JSX / Babel" };
+
+MyCompPropType.propTypes = {
+    message: PropTypes.string,
+        number: PropTypes.number,
+        requiredString: PropTypes.string.isRequired
+};
+
+export default MyCompPropType ;
+ 

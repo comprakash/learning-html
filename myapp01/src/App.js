@@ -2,6 +2,7 @@ import React, {Component} from "react";
 import logo from "./logo.svg";
 import "./App.css";
 import SearchBox from "./components/search-box/search-box";
+import MyCompPropType from "./components/my-comp-prop-type/my-comp-prop-type";
 // import CommentBox from "./components/comment-box/comment-box";
 // import User from "./components/user/user";
 // import Menu from "./components/menu/menu";
@@ -30,6 +31,7 @@ class App extends Component {
           <MyMap />
           <RepoList prm={$.getJSON('https://api.github.com/search/repositories?q=javascript&sort=stars')} /> */}
           <SearchBox />
+          <MyCompPropType message='cool framework' number={10}  requiredString="abc" />
         </header>
       </div>
     );
