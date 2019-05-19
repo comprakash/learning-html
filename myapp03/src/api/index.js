@@ -1,4 +1,4 @@
-const API_BASE_URL = '//localhost:9090/emails';
+const API_BASE_URL = 'http://localhost:9090/emails';
 
 const _fetchJson = (url, options) =>
   fetch(url, options).then(res => res.json()).catch(ex => console.error(ex));
