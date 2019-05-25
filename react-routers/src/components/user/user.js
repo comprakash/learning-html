@@ -1,76 +1,75 @@
 import React, { Component } from 'react';
 
+
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import Spinner from '../spinner/spinner'
 
-
-function ShowRepos(props) {
-    const { repoData } = props;
+function ShowUser(props) {
+    const { userData } = props;
     return (
-        <div className="show-repo-container">
-            <a href={repoData.html_url} className="center heading" 
-                  rel="noopener noreferrer"
-                  target="_blank">{repoData.full_name}</a>
-            <div className="stats-content">
-                <h4>Language: {repoData.language ? repoData.language : "N/A"}</h4>
-                <h4>Forks: {repoData.forks}</h4>
-                <h4>Stars: {repoData.stargazers_count}</h4>
+        <div className="show-user-container">
+            <div className="image-avatar">
+                <img src={userData.avatar_url} alt="avatar" />
             </div>
-            <p className="paragraph center">{repoData.description}</p>
-
+            <div className="intro-content">
+                <a href={userData.html_url} 
+                    rel="noopener noreferrer"
+                   target="_blank"><h2>{userData.name}</h2></a>
+                   
+                <h4>Followers: {userData.followers}</h4>
+                <h4>Following: {userData.following}</h4>
+                <h4>Repositories: {userData.public_repos}</h4>
+                <h4>Location: {userData.location}</h4>
+                <p>{userData.bio}</p>
+            </div>
         </div>
     )
 }
 
-class Repo extends Component {
+class User extends Component {
+
     state = {
-        repos: {},
+        users: {},
         errorMsg: "",
         loading: false
     }
 
     handleSubmit = (e) => {
-
+        this.setState({ users: {}, errorMsg: "" })
         e.preventDefault();
-        this.setState({ repos: {}, errorMsg: "" })
-        const repoName = this.getInput.value;
+        const value = this.getInput.value
         this.setState({ loading: true })
-        fetch(`https://api.github.com/search/repositories?q=${repoName}`)
-            .then((res) => res.json())
-            .then((res) => {
-                if (res.items.length === 0) {
+        fetch(`http://api.github.com/users/${value}`)
+            .then(res => res.json())
+            .then(res => {
+                if (res.message === "Not Found") {
                     this.setState({
-                        errorMsg: "Repo not found",
+                        errorMsg: "User not found",
                         loading: false
                     })
                     return;
                 }
-                this.setState({
-                    repos: res.items[0],
-                    loading: false,
-
-                })
-                console.log(this.state.repos)
-            })
+                this.setState({ loading: false })
+                this.setState({ users: { ...res } })
+            }).catch(err => console.log('User not found'))
     }
     render() {
         return (
-            <div className="repos-container">
+            <div className="user-container">
                 <h1 className="heading center">Github Viewer</h1>
                 <form onSubmit={this.handleSubmit} className="form">
                     <input required className="input" type="text" ref={(input) => this.getInput = input} 
-                                                   placeholder="Enter Repository Name" />
+                                             placeholder="Enter Github Username" />
                     <button className="btn-primary">Search</button>
                 </form>
-
                 {this.state.loading ? <Spinner /> : null}
                 {this.state.errorMsg ? <ReactCSSTransitionGroup transitionName="error" 
-                                      transitionAppear={true} transitionAppearTimeout={500} transitionEnterTimeout={500}
+                                       transitionAppear={true} transitionAppearTimeout={500} transitionEnterTimeout={500}
                     transitionLeaveTimeout={500}
                     transitionEnter={false}
                     transitionLeave={false}>
                     <p className="error">{this.state.errorMsg}</p></ReactCSSTransitionGroup> : null}
-                {Object.keys(this.state.repos).length !== 0 && this.state.repos.constructor === Object ?
+                {Object.keys(this.state.users).length !== 0 && this.state.users.constructor === Object ?
                     <ReactCSSTransitionGroup
                         transitionName="show"
                         transitionAppear={true}
@@ -80,10 +79,10 @@ class Repo extends Component {
                         transitionEnter={false}
                         transitionLeave={false}
                     >
-                        <ShowRepos repoData={this.state.repos} /></ReactCSSTransitionGroup> : null}
+                        <ShowUser userData={this.state.users} /></ReactCSSTransitionGroup> : null}
             </div>
         );
     }
 }
 
-export default Repo;
+export default User;
