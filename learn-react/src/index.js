@@ -2,30 +2,26 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 
-let city = {
-  name: "Bengaluru",
-  country: "India"
-}
+const lakeList = [
+  "Chilka Lake",
+  "Vembanad Lake",
+  "Shivaji Sagar Lake",
+  "Indira Sagar Lake",
+  "Pangong Lake"
+]
 
-function Hello({library, message, number}) {
-  console.log(library, message, number);
+function App({lakes}) {
   return (
-    <div>
-      <h1>Welcome to {library}!</h1>
-      <p>{message}</p>
-      <p>{number} Props Total</p>
-    </div>
+    <>
+      <h1>India's Biggest Lakes</h1>
+      <ul>
+        {lakes.map((lake) => <li key={lake}>{lake}</li>)}
+      </ul>
+    </>
   );
 }
 
 ReactDOM.render(
-  <div>
-    <h1 id="heading" className="cool-text">{city.name} is in {city.country}</h1>
-    <Hello 
-      library="React"
-      message="and Redux..."
-      number={3}
-    />
-  </div>, 
+  <App lakes={lakeList} />, 
   document.getElementById('root')
 );
