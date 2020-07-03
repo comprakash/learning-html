@@ -7,14 +7,13 @@ let city = {
   country: "India"
 }
 
-function Hello(props) {
-  console.log(props);
+function Hello({library, message, number}) {
+  console.log(library, message, number);
   return (
     <div>
-      <h1>Welcome to {props.library}!</h1>
-      <p>{props.message}</p>
-      <p>{props.number} Props Total</p>
-      <p>{Object.keys(props).length} Object Keys</p>
+      <h1>Welcome to {library}!</h1>
+      <p>{message}</p>
+      <p>{number} Props Total</p>
     </div>
   );
 }
