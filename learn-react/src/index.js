@@ -7,7 +7,14 @@ let city = {
   country: "India"
 }
 
+function Hello() {
+  return <h1>Welcome to React!</h1>;
+}
+
 ReactDOM.render(
-  <h1 id="heading" className="cool-text">{city.name} is in {city.country}</h1>, 
+  <div>
+    <h1 id="heading" className="cool-text">{city.name} is in {city.country}</h1>
+    <Hello />
+  </div>, 
   document.getElementById('root')
 );
